@@ -16,7 +16,7 @@ pub struct VaultInit<'info> {
 }
 
 impl<'info> VaultInit<'info> {
-    pub fn vault_init_inner(&self) -> Result<()> {
+    pub fn process(&self) -> Result<()> {
         self.vault.authority = *self.authority.key;
         self.vault.min_rent = self.system_program.rent.minimum_balance(Vault::size());
         Ok(())

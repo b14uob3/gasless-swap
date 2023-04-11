@@ -17,9 +17,6 @@ pub mod gasless_swap {
     use super::*;
 
     pub fn vault_init(ctx: Context<VaultInit>) -> Result<()> {
-        vault_init_inner()
+        ctx.accounts.process()
     }
 }
-
-#[derive(Accounts)]
-pub struct Initialize {}
