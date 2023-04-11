@@ -13,12 +13,13 @@ pub struct VaultInit<'info> {
     #[account(mut)]
     pub authority: Signer<'info>,
     pub system_program: Program<'info, System>,
+    pub rent: Sysvar<'info, Rent>,
 }
 
 impl<'info> VaultInit<'info> {
-    pub fn process(&self) -> Result<()> {
+    pub fn process(&mut self) -> Result<()> {
         self.vault.authority = *self.authority.key;
-        self.vault.min_rent = self.system_program.rent.minimum_balance(Vault::size());
+        self.vault.min_rent = self.rent.minimum_balance(Vault::size());
         Ok(())
     }
 }

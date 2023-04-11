@@ -6,11 +6,11 @@ mod instructions;
 mod state;
 
 pub use constants::*;
-pub use errors::*;
+pub use errors::ErrorCode;
 pub use instructions::*;
 pub use state::*;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("2RoFjWiiCtNjsvWf2GcgqGd1MqPPFbZ9aCRwiUQSLmet");
 
 #[program]
 pub mod gasless_swap {
@@ -18,5 +18,13 @@ pub mod gasless_swap {
 
     pub fn vault_init(ctx: Context<VaultInit>) -> Result<()> {
         ctx.accounts.process()
+    }
+
+    pub fn vault_close(ctx: Context<VaultClose>) -> Result<()> {
+        ctx.accounts.process()
+    }
+
+    pub fn vault_deposit(ctx: Context<VaultDeposit>, amount: u64) -> Result<()> {
+        ctx.accounts.process(amount)
     }
 }
