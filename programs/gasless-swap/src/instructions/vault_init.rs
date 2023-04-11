@@ -1,4 +1,4 @@
-use crate::*
+use crate::*;
 
 #[derive(Accounts)]
 pub struct VaultInit<'info> {

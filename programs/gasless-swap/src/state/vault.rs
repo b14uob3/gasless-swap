@@ -1,4 +1,4 @@
-use crate::*
+use crate::*;
 
 #[account]
 pub struct Vault {
